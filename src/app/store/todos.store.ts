@@ -67,6 +67,24 @@ export const TodosStore = signalStore(
         patchState(store, (state => ({
           todos: state.todos.filter((todo: { id: string; }) => todo.id !== id)
         })))
+      },
+
+      async updateTodo(id: string, completed: boolean) {
+
+        /* Appelle une méthode asynchrone du service pour mettre à jour le todo */
+        await todosService.updateTodo(id, completed);
+
+        /* utilise patchState() pour mettre à jour l'état du store */
+        patchState(store, (state) => ({
+
+          /* Crée un nouvel objet avec la propriété 'todos'  mise à jour*/
+          todos: state.todos.map(todo =>
+
+            /* Pour chaque todo, vérifie si son id correspond à celui passé en paramètre */
+            /* opérateur ternaire 'condition ? valeurSiVrai : valeurSiFaux' */
+            todo.id === id ? { ...todo, completed } : todo)
+          /* les trois petits points ... correspondent à un opérateur de propagation => permet de copier toutes les propriétés d'un objet dans un nouvel objet */
+        }))
       }
     };
 

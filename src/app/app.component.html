@@ -1,7 +1,22 @@
 <div class="app">
   <div class="angular-univ-container">
-    <img src="https://www.vecteezy.com/vector-art/3529153-business-to-do-list-flat-icon-modern-style" alt="" />
+    <img
+      src="https://www.vecteezy.com/vector-art/3529153-business-to-do-list-flat-icon-modern-style"
+      alt=""
+    />
     <h1>Angular University</h1>
     <a href="https://angular-university.io">angular-university.io</a>
   </div>
+
+  @if(!store.loading()){
+  <todos-list />
+  } @else {
+  <span
+    >Loading...<mat-spinner
+      [diameter]="50"
+      [color]="'accent'"
+      [mode]="'indeterminate'"
+    ></mat-spinner
+  ></span>
+  }
 </div>

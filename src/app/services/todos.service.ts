@@ -28,7 +28,7 @@ export class TodosService {
 
   async updateTodo(id: string, completed: boolean) {
     await sleep(500);
-  },
+  }
 
 
 }

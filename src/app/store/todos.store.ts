@@ -30,7 +30,8 @@ export const TodosStore = signalStore(
   /* Utilisation de WithState pour définir l'état initial du store */
   withState(initialState),
 
-  /* Utilisation de WithMethods pour ajouter des méthodes au store pour modifier l'état du store encapsule la logique de mise à jour de l'état*/
+  /* Utilisation de WithMethods pour ajouter des méthodes au store pour modifier
+  l'état du store encapsule la logique de mise à jour de l'état*/
   withMethods((store) => {
 
     /* Injection du service TodosService */
@@ -94,11 +95,12 @@ export const TodosStore = signalStore(
 
 
   }),
-  /* withComputed() méthode utilisée pour définir des propriétés calculées(computed properties) basées sur l'état actuel du store.
+  /* withComputed() méthode utilisée pour définir des propriétés calculées(computed properties)
+   basées sur l'état actuel du store.
   Ce sont des valeurs dérivées qui se mettent à jour automatiquement lorsque l'état change */
   withComputed((state) => ({
 
-    /* propriété caluclée ici filteredTodos => filtre les todos en fonction de l'état actuel du filtre,
+    /* propriété calculée ici filteredTodos => filtre les todos en fonction de l'état actuel du filtre,
      sera recalculé automatiquement jusqu'à ce que state.todos() ou state.filter() changera*/
     filteredTodos: computed(() => {
 
